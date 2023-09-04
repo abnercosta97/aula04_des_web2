@@ -4,8 +4,13 @@
   "description": "��#\u0000 \u0000a\u0000u\u0000l\u0000a\u00000\u00004\u0000_\u0000d\u0000e\u0000s\u0000_\u0000w\u0000e\u0000b\u00002\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "start": "ts-node ./src",
+    "dev": "ts-node-dev ./src",
+    "migration:generate": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/migrations/default",
+    "migration:run": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:run",
+    "migration:revert": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:revert"
+    },
+    
   "keywords": [],
   "author": "",
   "license": "ISC",
