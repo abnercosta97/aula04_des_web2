@@ -11,4 +11,6 @@ app.use(express.json());
 app.listen(PORT, () => {
   console.log(`Rodando na porta ${PORT}`);
 });
-// define a rota p
+// define a rota para o pacote /routes
+app.use(routes);
+

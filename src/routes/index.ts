@@ -6,4 +6,5 @@ routes.use("/usuario", user);
 routes.use((_: Request, res: Response) =>
   res.json({ error: "Requisição desconhecida" })
 );
+
 export default routes;
