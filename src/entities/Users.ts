@@ -7,9 +7,13 @@ export class User{
     @PrimaryGeneratedColumn({primaryKeyConstraintName:"pk-user"})
     id: number;
 
-    @Column({nullable: false, unique: true, length: 50})
-    mail: string;
+    @Column({nullable: false, length:15, unique: true})
+    alias: string;
 
     @Column({nullable: false, length: 100})
-    password: string;
+    mail: string;
+
+    @Column({nullable:false, length:20})
+    phone: string;
+
 }
