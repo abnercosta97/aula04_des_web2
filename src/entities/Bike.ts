@@ -1,6 +1,11 @@
-import { Column } from "typeorm";
+import { Column, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import { PrimaryGeneratedColumn } from "typeorm";
 import { Entity } from "typeorm";
+import { Brand } from "./Brand";
+import { Category } from "./Category";
+import { Photo } from "./Photo";
+import { User } from "./Users";
+import { Rent } from "./Rent";
 
 export type Gender = "masculico" | "feminino" | "unissex";
 export type Material = "aluminio" | "carbono" | "ferro";
@@ -39,4 +44,22 @@ export class Bikes{
 
     @Column({nullable:false, length:200})
     description: string;
+
+    @ManyToOne(()=> Brand)
+    @JoinColumn({name: "idbrand" })
+    brand: Brand;
+    
+    @ManyToOne(()=> Category)
+    @JoinColumn({name: "idcategory" })
+    category: Category;
+
+    @OneToMany(() => Photo, (photo) => photo.bike)
+    photos: Photo[];
+
+    @ManyToOne(()=> User)
+    @JoinColumn({name: "iduser" })
+    user: User;
+    
+    @OneToMany(() => Rent, (rents) => rents.bike)
+    rents: Rent[];
 }

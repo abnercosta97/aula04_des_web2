@@ -1,6 +1,7 @@
-import { Column } from "typeorm";
+import { Column, OneToMany } from "typeorm";
 import { PrimaryGeneratedColumn } from "typeorm";
 import { Entity } from "typeorm";
+import { Rent } from "./Rent";
 
 @Entity({name:"users"})
 export class User{
@@ -16,4 +17,6 @@ export class User{
     @Column({nullable:false, length:20})
     phone: string;
 
+    @OneToMany(() => Rent, (rents) => rents.bike)
+    rents: Rent[];
 }
